@@ -1,0 +1,30 @@
+@import "tailwindcss";
+/* GOOGLE FONTS */
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap");
+
+/* FIGHTER FONT */
+@import url("https://fonts.cdnfonts.com/css/fighter");
+@theme{
+    --font-lato: "Lato", system-ui, sans-serif;
+    --font-figtree: "Figtree", system-ui, sans-serif;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none; 
+  scrollbar-width: none;    
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;             
+}
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-slideIn {
+  animation: slideIn 0.25s ease-out;
+}
