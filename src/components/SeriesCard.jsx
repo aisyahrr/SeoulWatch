@@ -1,7 +1,7 @@
 export default function SeriesCard({ item }) {
   return (
     <div className="flex flex-col gap-2 text-center">
-        <div className="relative w-full h-[1500px] md:h-[250px] rounded-lg overflow-hidden group cursor-pointer">
+        <div className="relative w-full h-[150px] md:h-[250px] rounded-lg overflow-hidden group cursor-pointer">
         {/* Poster */}
         <img
             src={item.poster}
