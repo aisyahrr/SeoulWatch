@@ -1,6 +1,6 @@
 export default function SeriesCard({ item }) {
   return (
-    <div className="flex-shrink-0 w-[160px]">
+    <div className="flex-shrink-0 w-[120px] md:w-[160px]">
       <div className="relative rounded-xl overflow-hidden group cursor-pointer aspect-[2/3]">
         <img
           src={item.poster}
