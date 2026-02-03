@@ -55,8 +55,6 @@ const Home = () => {
         <div className="space-y-12">
             <section className="space-y-8">
                 <TitleHome 
-                onViewAll={() => setShowAllSeries(prev => !prev)} 
-                isExpanded={showAllSeries}
                 title="Most Watched Series" accentColor="bg-red-600" />
                 <MostGrid data={mostWatched} />
             </section>
