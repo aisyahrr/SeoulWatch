@@ -5,7 +5,7 @@ export default function SectionTitle({
 }) {
   return (
     <div className="space-y-2">
-      <h2 className="text-xl font-bold uppercase font-fighter text-white">
+      <h2 className="text-lg md:text-xl font-bold uppercase font-fighter text-white">
         {title}
       </h2>
 
