@@ -4,7 +4,7 @@ import TopSeriesList from "./TopSeriesList";
 import { fetchFromList } from "@/services/tmdb";
 import CategoriesGenre from "./CategoriesGenre";
 
-const LIST_ID = "8631455"; 
+const LIST_ID = import.meta.env.VITE_LIST_ID; 
 
 export default function  Sidebar({ genres, activeGenre, onSelectGenre }) {
     const [topSeries, setTopSeries] = useState([]);

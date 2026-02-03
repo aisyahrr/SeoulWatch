@@ -6,7 +6,7 @@ import MovieGrid from "@/components/MovieGrid";
 import { fetchFromList, fetchMostWatchedKoreanSeries, fetchGenres } from "@/services/tmdb";
 import MostGrid from "@/components/MostGrid";
 
-const LIST_ID = "8631455"; 
+const LIST_ID = import.meta.env.VITE_LIST_ID; 
 
 const Home = () => {
     const [items, setItems] = useState([]);

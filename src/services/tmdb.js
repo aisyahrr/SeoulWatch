@@ -1,6 +1,6 @@
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
-const BASE_URL = "https://api.themoviedb.org/3";
-const IMAGE_BASE = "https://image.tmdb.org/t/p/w500";
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+const IMAGE_BASE = import.meta.env.VITE_IMAGE_BASE;
 
 export async function fetchFromList(listId) {
   let allItems = [];

@@ -5,7 +5,7 @@ import Sidebar from "@/components/Sidebar";
 import Footer from "@/components/Footer";
 import { fetchGenres, fetchFromList } from "@/services/tmdb";
 
-const LIST_ID = "8631455";
+const LIST_ID = import.meta.env.VITE_LIST_ID; 
 
 export default function Layoutpage() {
     const [items, setItems] = useState([]);
