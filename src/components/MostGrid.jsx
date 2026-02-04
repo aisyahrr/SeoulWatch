@@ -17,7 +17,7 @@ export default function MostGrid({ data }) {
       "
     >
       {data.map(item => (
-        <MostCard key={item.id} item={item} />
+        <MostCard key={item.id} item={item} type={item.media_type || "tv"} />
       ))}
     </div>
   );

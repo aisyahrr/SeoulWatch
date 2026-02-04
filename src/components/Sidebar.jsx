@@ -30,7 +30,7 @@ export default function  Sidebar({ genres, activeGenre, onSelectGenre }) {
             title="Top 5 Series I Watched"
             accentColor="bg-yellow-500"
         />
-        <TopSeriesList data={topSeries} />
+        <TopSeriesList data={topSeries} type={topSeries.media_type || "tv"} />
 
         <SectionTitle title="Categories" accentColor="bg-red-500" />
         <CategoriesGenre

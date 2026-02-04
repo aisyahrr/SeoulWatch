@@ -19,7 +19,7 @@ export default function SeriesGrid({ data }) {
       "
     >
       {data.map(item => (
-        <SeriesCard key={item.id} item={item} />
+        <SeriesCard key={item.id} item={item} type="tv" />
       ))}
     </div>
   );

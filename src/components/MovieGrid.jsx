@@ -17,7 +17,7 @@ export default function MovieGrid({ data }) {
       "
     >
       {data.map(item => (
-        <MovieCard key={item.id} item={item} />
+        <MovieCard key={item.id} item={item} type="movie" />
       ))}
     </div>
   );

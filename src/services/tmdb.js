@@ -50,21 +50,6 @@ export async function fetchFromList(listId) {
 
   return allItems;
 }
-// get trailer
-export async function fetchTrailer(id, type) {
-  const res = await fetch(
-    `${BASE_URL}/${type}/${id}/videos?api_key=${API_KEY}`
-  );
-  const data = await res.json();
-
-  const trailer = data.results.find(
-    v => v.type === "Trailer" && v.site === "YouTube"
-  );
-
-  return trailer
-    ? `https://www.youtube.com/watch?v=${trailer.key}`
-    : null;
-}
 // mostwatchedseries korea
 export async function fetchMostWatchedKoreanSeries() {
   const res = await fetch(
@@ -114,5 +99,46 @@ export async function fetchGenres() {
 
   return Array.from(map.values());
 }
+// get trailer
+export async function fetchDetail(id, type = "tv") {
+  const res = await fetch(
+    `${BASE_URL}/${type}/${id}?api_key=${API_KEY}&language=en-US`
+  );
+
+  if (!res.ok) return null;
+
+  return await res.json();
+}
+
+export async function fetchTrailer(id, type = "tv") {
+  const res = await fetch(
+    `${BASE_URL}/${type}/${id}/videos?api_key=${API_KEY}`
+  );
+
+  if (!res.ok) return null;
+
+  const data = await res.json();
+
+  const trailer = data.results.find(
+    v =>
+      v.site === "YouTube" &&
+      (v.type === "Trailer" || v.type === "Teaser")
+  );
+
+  return trailer ? trailer.key : null;
+}
+
+export async function fetchActor(id, type = "tv") {
+  const res = await fetch(
+    `${BASE_URL}/${type}/${id}/credits?api_key=${API_KEY}`
+  );
+
+  if (!res.ok) return null;
+
+  const data = await res.json();
+
+  return data.cast; 
+}
+
 
 

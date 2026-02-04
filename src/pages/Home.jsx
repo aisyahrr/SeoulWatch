@@ -51,6 +51,14 @@ const Home = () => {
         ? genres.find(g => g.id === activeGenre)?.name
         : null;
 
+    if (!items) {
+        return (
+        <div className="flex items-center justify-center py-20 min-h-screen gap-2 text-white font-lato">
+            <div className="w-10 h-10 border-5 border-red-800 border-t-red-500 rounded-full animate-spin" />
+            <p>Loading</p>
+        </div>
+        );
+    }
     return (
         <div className="space-y-12">
             <section className="space-y-8">
