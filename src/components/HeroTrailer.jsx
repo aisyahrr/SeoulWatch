@@ -6,7 +6,7 @@ export default function HeroTrailer({
 }) {
     if (trailerKey) {
         return (
-        <div className="relative w-full h-[30vh] md:h-[100vh]">
+        <div className="relative w-full h-[40vh] md:h-[100vh]">
             <iframe
             className="w-full h-full"
             src={`https://www.youtube.com/embed/${trailerKey}?autoplay=1&mute=1`}
