@@ -9,7 +9,7 @@ export default function CastRow({ actors = [] }) {
             {actors.slice(0, 15).map(actor => (
             <div
                 key={actor.id}
-                className="min-w-[100px] md:min-w-[130px] text-center"
+                className="min-w-[100px] md:min-w-[100px] text-center"
             >
                 <div className="relative w-full aspect-[3/4] rounded-lg overflow-hidden bg-neutral-800">
                 <img

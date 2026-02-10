@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback } from "react";
+import { Link } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { searchTMDB } from "@/services/tmdb";
@@ -77,11 +78,16 @@ export default function Navbar({ onOpenSidebar }) {
 
           {/* DROPDOWN RESULT */}
           {open && results.length > 0 && (
-            <div className="absolute top-11 w-full bg-neutral-900 border border-neutral-700 rounded-lg overflow-hidden">
+            <div className="absolute top-11 w-full bg-neutral-900 border border-neutral-700 rounded-lg overflow-hidden z-50">
               {results.map(item => (
-                <div
+                <Link
                   key={item.id}
-                  className="flex gap-3 p-3 hover:bg-neutral-800 cursor-pointer"
+                  to={`/detail/${item.type}/${item.id}`}
+                  onClick={() => {
+                    setOpen(false);
+                    setQuery("");
+                  }}
+                  className="flex gap-3 p-3 hover:bg-neutral-800 transition"
                 >
                   <img
                     src={item.poster}
@@ -94,10 +100,11 @@ export default function Navbar({ onOpenSidebar }) {
                       ⭐ {item.rating} • {item.year}
                     </p>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           )}
+
         </div>
       </div>
     </header>

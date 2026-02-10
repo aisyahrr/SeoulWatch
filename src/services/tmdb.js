@@ -146,7 +146,7 @@ export async function searchTMDB(query, options = {}) {
 
   const { signal } = options;
   const res = await fetch(
-    `${BASE_URL}/search/multi?api_key=${API_KEY}&query=${encodeURIComponent(
+    `${BASE_URL}/search/multi?api_key=${API_KEY}&language=en-US&query=${encodeURIComponent(
       query
     )}`,
     { signal }
@@ -161,8 +161,8 @@ export async function searchTMDB(query, options = {}) {
   return data.results
     .filter(
       item =>
-        item.media_type === "tv" ||
-        item.media_type === "movie"
+        (item.media_type === "tv" || item.media_type === "movie") &&
+        item.original_language === "ko"
     )
     .map(item => ({
       id: item.id,

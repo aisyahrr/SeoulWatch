@@ -41,10 +41,10 @@ const Home = () => {
 
     const displayedSeries = showAllSeries
     ? series 
-    : series.slice(0,20);
+    : series.slice(0,18);
     const displayedMovie = showAllMovie
     ? movies
-    : movies.slice(0,5);
+    : movies.slice(0,20);
 
     const activeGenreName =
     activeGenre

@@ -51,7 +51,7 @@ export default function Detail() {
         />
 
         {/* CONTENT */}
-        <section className="px-4 md:px-10 py-5 max-w-6xl">
+        <section className="px-4 md:px-10 py-5">
             <h1 className="text-lg md:text-4xl font-bold">
             {detail.title || detail.name}
             </h1>
@@ -64,7 +64,7 @@ export default function Detail() {
                 <span className=" flex items-center gap-2">•<span className=" text-red-700 font-lato font-semibold">{detail.number_of_episodes} Episodes</span></span>
                 )}
             </div>
-            <p className="mt-4 text-neutral-300 text-justify leading-relaxed max-w-3xl">
+            <p className="mt-4 text-neutral-300 text-justify leading-relaxed max-w-5xl">
             {detail.overview}
             </p>
             <CastRow actors={actors} />
