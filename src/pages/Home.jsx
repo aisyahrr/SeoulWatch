@@ -41,7 +41,7 @@ const Home = () => {
 
     const displayedSeries = showAllSeries
     ? series 
-    : series.slice(0,12);
+    : series.slice(0,20);
     const displayedMovie = showAllMovie
     ? movies
     : movies.slice(0,5);

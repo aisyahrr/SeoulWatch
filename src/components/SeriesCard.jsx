@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 export default function SeriesCard({ item, type }) {
   return (
     <Link to={`/detail/${type}/${item.id}`}>
-      <div className="flex flex-col gap-2 text-center">
-        <div className="relative w-full h-[150px] md:h-[250px] rounded-lg overflow-hidden group cursor-pointer">
+      <div className="flex-shrink-0 gap-3 w-[90px] md:w-[150px] text-center space-y-2">
+        <div className="relative rounded-xl overflow-hidden group cursor-pointer aspect-[2/3]">
           <img
             src={item.poster}
             alt={item.title}

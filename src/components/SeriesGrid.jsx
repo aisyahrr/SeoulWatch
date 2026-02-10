@@ -14,7 +14,8 @@ export default function SeriesGrid({ data }) {
       className="
         grid grid-cols-3
         sm:grid-cols-4
-        lg:grid-cols-6
+        lg:grid-cols-7
+        2xl:grid-cols-10
         gap-4
       "
     >

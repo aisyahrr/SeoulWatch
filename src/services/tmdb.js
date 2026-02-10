@@ -140,5 +140,46 @@ export async function fetchActor(id, type = "tv") {
   return data.cast; 
 }
 
+// search drakor & movie
+export async function searchTMDB(query, options = {}) {
+  if (!query) return [];
+
+  const { signal } = options;
+  const res = await fetch(
+    `${BASE_URL}/search/multi?api_key=${API_KEY}&query=${encodeURIComponent(
+      query
+    )}`,
+    { signal }
+  );
+
+  if (!res.ok) {
+    throw new Error("Failed to search TMDB");
+  }
+
+  const data = await res.json();
+
+  return data.results
+    .filter(
+      item =>
+        item.media_type === "tv" ||
+        item.media_type === "movie"
+    )
+    .map(item => ({
+      id: item.id,
+      type: item.media_type,
+      title: item.media_type === "tv" ? item.name : item.title,
+      year:
+        item.media_type === "tv"
+          ? item.first_air_date?.slice(0, 4)
+          : item.release_date?.slice(0, 4),
+      rating: item.vote_average,
+      genre_ids: item.genre_ids || [],
+      poster: item.poster_path
+        ? IMAGE_BASE + item.poster_path
+        : "/images/placeholder.jpg",
+    }));
+}
+
+
 
 
