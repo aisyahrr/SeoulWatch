@@ -2,20 +2,22 @@ import { useState, useRef, useCallback } from "react";
 import { FiSearch } from "react-icons/fi";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { searchTMDB } from "@/services/tmdb";
-import useDebounce from "@/hooks/useDebounce";
 
 export default function Navbar({ onOpenSidebar }) {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [open, setOpen] = useState(false);
   const abortControllerRef = useRef(null);
-
-  const debouncedQuery = useDebounce(query, 400);
-  void debouncedQuery;
+  const searchTimeoutRef = useRef(null);
 
   const handleQueryChange = useCallback((e) => {
     const newQuery = e.target.value;
     setQuery(newQuery);
+
+    // Clear previous timeout
+    if (searchTimeoutRef.current) {
+      clearTimeout(searchTimeoutRef.current);
+    }
 
     if (!newQuery.trim()) {
       setOpen(false);
@@ -23,22 +25,25 @@ export default function Navbar({ onOpenSidebar }) {
       return;
     }
 
-    // Cancel previous request
-    if (abortControllerRef.current) {
-      abortControllerRef.current.abort();
-    }
+    // Debounce search
+    searchTimeoutRef.current = setTimeout(() => {
+      // Cancel previous request
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+      }
 
-    abortControllerRef.current = new AbortController();
+      abortControllerRef.current = new AbortController();
 
-    // Perform search
-    searchTMDB(newQuery, { signal: abortControllerRef.current.signal })
-      .then(data => {
-        setResults(data.slice(0, 8));
-        setOpen(true);
-      })
-      .catch(() => {
-        // Ignore aborted requests
-      });
+      // Perform search
+      searchTMDB(newQuery, { signal: abortControllerRef.current.signal })
+        .then(data => {
+          setResults(data.slice(0, 8));
+          setOpen(true);
+        })
+        .catch(() => {
+          // Ignore aborted requests
+        });
+    }, 400);
   }, []);
 
   return (
@@ -81,7 +86,7 @@ export default function Navbar({ onOpenSidebar }) {
                   <img
                     src={item.poster}
                     alt={item.title}
-                    className="w-12 h-16 object-cover rounded"
+                    className="w-10 h-14 object-cover rounded"
                   />
                   <div>
                     <p className="text-white text-sm">{item.title}</p>
